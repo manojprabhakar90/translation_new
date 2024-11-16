@@ -14,11 +14,13 @@ If you're using Poetry to manage dependencies, follow these steps:
 
 **Clone this repository:**
 
-You can install the requirements through poetry install (The dependencies are installed through poetry)
+git clone https://github.com/manojprabhakar90/translation.git
+
+You can directly install the package through pip install translation-new
 
 # Usage
 
-from translation.translator import Translator
+from translation_new.translator import Translator
 
 translator = Translator()
 
@@ -52,3 +54,5 @@ We welcome contributions to improve the translation package. If you'd like to co
 # **License**
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
