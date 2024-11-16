@@ -22,11 +22,12 @@ from translation.translator import Translator
 
 translator = Translator()
 
-translated_text = translator.translate("Hello, how are you?", lang="fr")
+translated_text = translator.translate("Hello, how are you?", lang="hi")
 
-print(translated_text)  # Outputs: "Bonjour, comment ça va ?"
+print(translated_text)
 
 # Supported Languages
+
 This package supports translation between the following languages (identified by their ISO codes):
 
 Arabic (ar)
@@ -47,7 +48,6 @@ We welcome contributions to improve the translation package. If you'd like to co
 3. Make your changes.
 4. Push to the branch (git push origin feature-branch).
 5. Create a pull request with a description of your changes.
-
 
 # **License**
 
