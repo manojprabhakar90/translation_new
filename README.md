@@ -25,7 +25,7 @@ translated_text = translator.translate("Hello, how are you?", lang="fr")
 
 print(translated_text)  # Outputs: "Bonjour, comment ça va ?"
 
-**Supported Languages**
+# Supported Languages
 This package supports translation between the following languages (identified by their ISO codes):
 
 Arabic (ar)
@@ -38,7 +38,7 @@ Spanish (es)
 And many more!
 For a complete list of supported languages, please check the LANGUAGE_CODES in the Translator class.
 
-**Contributions** 
+# **Contributions** 
 We welcome contributions to improve the translation package. If you'd like to contribute:
 
 1. Fork the repository.
@@ -48,6 +48,6 @@ We welcome contributions to improve the translation package. If you'd like to co
 5. Create a pull request with a description of your changes.
 
 
-**License**
+# **License**
 
 This project is licensed under the MIT License - see the LICENSE file for details.
