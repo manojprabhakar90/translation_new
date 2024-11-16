@@ -18,5 +18,5 @@ def test_translation_hindi():
 
 def test_translation_english():
     translator = Translator()
-    result = translator.translate("Bomjour", lang="en")
+    result = translator.translate("Bonjour", lang="en")
     assert result is not None
