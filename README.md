@@ -42,17 +42,7 @@ Spanish (es)
 And many more!
 For a complete list of supported languages, please check the LANGUAGE_CODES in the Translator class.
 
-# **Contributions** 
-We welcome contributions to improve the translation package. If you'd like to contribute:
-
-1. Fork the repository.
-2. Create a new branch (git checkout -b feature-branch).
-3. Make your changes.
-4. Push to the branch (git push origin feature-branch).
-5. Create a pull request with a description of your changes.
-
 # **License**
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
+This project is licensed under the Apache License
 
