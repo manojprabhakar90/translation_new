@@ -13,21 +13,12 @@ If you're using Poetry to manage dependencies, follow these steps:
 
 **Clone this repository:**
 
-bash:  git clone https://github.com/username/translation-package.git
+You can install the requirements through poetry install (The dependencies are installed through poetry)
 
-cd translation-package
+# Usage
 
-Install dependencies with Poetry:
-
-poetry install
-
-**Usage:**
 from translation.translator import Translator
-
-# Initialize translator
 translator = Translator()
-
-# Translate a sentence
 translated_text = translator.translate("Hello, how are you?", lang="fr")
 print(translated_text)  # Outputs: "Bonjour, comment ça va ?"
 
@@ -44,7 +35,7 @@ Spanish (es)
 And many more!
 For a complete list of supported languages, please check the LANGUAGE_CODES in the Translator class.
 
-**Contributing** 
+**Contributions** 
 We welcome contributions to improve the translation package. If you'd like to contribute:
 
 1. Fork the repository.
