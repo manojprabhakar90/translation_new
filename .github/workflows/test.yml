@@ -36,4 +36,4 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          poetry run pytest --maxfail=1 --disable-warnings -q  # Automatically detect all tests
+          poetry run pytest -v --maxfail=1 --disable-warnings -q  # Automatically detect all tests
