@@ -1,5 +1,5 @@
 import pytest
-from translation.translator import Translator
+from translation_new.translator import Translator
 
 def test_translation_french():
     translator = Translator()

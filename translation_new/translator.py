@@ -83,9 +83,3 @@ class Translator:
         except Exception as e:
             logger.error(f"Error during translation: {e}")
             raise e
-        
-translator = Translator()
-
-# Translate a sentence
-translated_text = translator.translate("Hello, how are you?", lang="fr")
-print(translated_text)  # Should print: "Bonjour, comment ça va ?"
