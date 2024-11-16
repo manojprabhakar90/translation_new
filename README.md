@@ -18,8 +18,11 @@ You can install the requirements through poetry install (The dependencies are in
 # Usage
 
 from translation.translator import Translator
+
 translator = Translator()
+
 translated_text = translator.translate("Hello, how are you?", lang="fr")
+
 print(translated_text)  # Outputs: "Bonjour, comment ça va ?"
 
 **Supported Languages**
