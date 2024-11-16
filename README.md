@@ -14,15 +14,13 @@ If you're using Poetry to manage dependencies, follow these steps:
 **Clone this repository:**
 
 bash:  git clone https://github.com/username/translation-package.git
+
 cd translation-package
+
 Install dependencies with Poetry:
+
 poetry install
 
-git clone https://github.com/username/translation-package.git
-Install the dependencies:
-
-bash
-pip install -r requirements.txt
 **Usage:**
 from translation.translator import Translator
 
@@ -33,9 +31,7 @@ translator = Translator()
 translated_text = translator.translate("Hello, how are you?", lang="fr")
 print(translated_text)  # Outputs: "Bonjour, comment ça va ?"
 
-translated_text = translator.translate("Hola, ¿cómo estás?", lang="auto")
-print(translated_text)  # Outputs: "Hello, how are you?"
-Supported Languages
+**Supported Languages**
 This package supports translation between the following languages (identified by their ISO codes):
 
 Arabic (ar)
@@ -48,25 +44,16 @@ Spanish (es)
 And many more!
 For a complete list of supported languages, please check the LANGUAGE_CODES in the Translator class.
 
-Running Tests
-You can run the tests using pytest to ensure everything is working:
-
-Install pytest:
-
-bash
-pip install pytest
-Run the tests:
-
-bash
-pytest
-
-Contributing
+**Contributing** 
 We welcome contributions to improve the translation package. If you'd like to contribute:
 
-Fork the repository.
-Create a new branch (git checkout -b feature-branch).
-Make your changes.
-Push to the branch (git push origin feature-branch).
-Create a pull request with a description of your changes.
-License
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature-branch).
+3. Make your changes.
+4. Push to the branch (git push origin feature-branch).
+5. Create a pull request with a description of your changes.
+
+
+**License**
+
 This project is licensed under the MIT License - see the LICENSE file for details.
