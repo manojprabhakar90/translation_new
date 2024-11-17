@@ -26,8 +26,6 @@ translator = Translator()
 
 translated_text = translator.translate("Hello, how are you?", lang="hi")
 
-print(translated_text)
-
 # Supported Languages
 
 This package supports translation between the following languages (identified by their ISO codes):
