@@ -1,21 +1,14 @@
 import logging
-from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
+from transformers import MBartForConditionalGeneration, MBart50TokenizerFast, MarianMTModel, MarianTokenizer
 
 # Configure logger
 logger = logging.getLogger("TranslationLogger")
 logger.setLevel(logging.INFO)
 
-# Create console handler and set level to info
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
-
-# Create formatter
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-
-# Add formatter to console handler
 console_handler.setFormatter(formatter)
-
-# Add console handler to logger
 logger.addHandler(console_handler)
 
 class Translator:
@@ -42,44 +35,55 @@ class Translator:
 
     def __init__(self):
         try:
-            self.model_name = "facebook/mbart-large-50-many-to-many-mmt"
-            self.model = MBartForConditionalGeneration.from_pretrained(self.model_name)
-            self.tokenizer = MBart50TokenizerFast.from_pretrained(self.model_name)
-            logger.info("Model and tokenizer loaded successfully.")
+            self.mbart_model_name = "facebook/mbart-large-50-many-to-many-mmt"
+            self.mbart_model = MBartForConditionalGeneration.from_pretrained(self.mbart_model_name)
+            self.mbart_tokenizer = MBart50TokenizerFast.from_pretrained(self.mbart_model_name)
+            logger.info("MBart model and tokenizer loaded successfully.")
+
+            # Load Helsinki-NLP model for German translations
+            self.helsinki_model_name = "Helsinki-NLP/opus-mt-en-de"
+            self.helsinki_model = MarianMTModel.from_pretrained(self.helsinki_model_name)
+            self.helsinki_tokenizer = MarianTokenizer.from_pretrained(self.helsinki_model_name)
+            logger.info("Helsinki model and tokenizer loaded successfully.")
         except Exception as e:
-            logger.error(f"Error loading model or tokenizer: {e}")
+            logger.error(f"Error loading models or tokenizers: {e}")
             raise e
 
     def translate(self, text: str, lang: str):
         try:
-            # Debugging: Print the language input and check mapping
             logger.info(f"Received language: {lang}")
 
+            # Use Helsinki model for German translations
+            if lang == "de" or lang == "de_DE":
+                logger.info("Using Helsinki model for German translation.")
+                inputs = self.helsinki_tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+                translated = self.helsinki_model.generate(inputs["input_ids"])
+                translation = self.helsinki_tokenizer.decode(translated[0], skip_special_tokens=True)
+                return translation
+
+            # Use MBart model for other languages
             lang_code = None
             if lang in self.LANGUAGE_CODES:
-                lang_code = self.LANGUAGE_CODES[lang]  # Language name to language code
+                lang_code = self.LANGUAGE_CODES[lang]
                 logger.info(f"Mapped language '{lang}' to language code '{lang_code}'")
             elif lang in self.LANGUAGE_CODES.values():
-                lang_code = lang  # Language code already passed
+                lang_code = lang
                 logger.info(f"Using language code '{lang_code}' directly")
             else:
                 raise ValueError(f"Invalid language: {lang}")
 
             logger.info(f"Translating to {lang_code} ({lang})")
-
-            # Tokenize the input text
-            inputs = self.tokenizer(text, return_tensors="pt", padding=True, truncation=True)
-
-            # Translate
-            translated = self.model.generate(
+            inputs = self.mbart_tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+            translated = self.mbart_model.generate(
                 inputs["input_ids"],
-                forced_bos_token_id=self.tokenizer.lang_code_to_id[lang_code]  # Use lang_code for forced BOS token
+                forced_bos_token_id=self.mbart_tokenizer.lang_code_to_id[lang_code]
             )
-
-            # Decode the translated tokens back into text
-            translation = self.tokenizer.decode(translated[0], skip_special_tokens=True)
+            translation = self.mbart_tokenizer.decode(translated[0], skip_special_tokens=True)
             return translation
 
         except Exception as e:
             logger.error(f"Error during translation: {e}")
             raise e
+
+
+

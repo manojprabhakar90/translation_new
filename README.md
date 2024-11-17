@@ -16,7 +16,9 @@ If you're using Poetry to manage dependencies, follow these steps:
 
 git clone https://github.com/manojprabhakar90/translation_new.git
 
-You can directly install the package through pip install translation-new
+You can directly install the package from pypi through the below code: 
+
+Code: pip install translation-new
 
 # Usage
 
